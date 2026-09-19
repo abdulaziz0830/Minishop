@@ -1,0 +1,10 @@
+$OpenSans: ("Medium", 500), ("Regular", 400), ("Bold", 700), ("Light", 100),("SemiBold",600),
+    ("ExtraBold", 800);
+
+@each $name, $weight in $OpenSans {
+    @font-face {
+        font-family: "OpenSans";
+        src: url("../fonts/OpenSans-#{$name}.ttf");
+        font-weight: $weight;
+    }
+}

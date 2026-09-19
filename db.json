@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "email": "emerates118@gmail.com",
+      "password": "$2a$10$PCDSkhuJCOz1u31X3vB9ouV8cA434VGhjpCE3YYpGoz2ZGuOqM3k6",
+      "username": "abdulaziz0830",
+      "password2": "abdulaziz0830",
+      "id": 1
+    },
+    {
+      "email": "emerates118@gmail.com",
+      "password": "$2a$10$jqY7u4Mkd0Ju7xnBnRn22uko7SAMcO9mYn1SNU/RMfgsPLTuTo3Ei",
+      "username": "abdulaziz",
+      "password2": "abdulaziz0830",
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Margherita Pizza",
+      "price": 12.5,
+      "description": "Klassik pitsa: pomidor sousi, mozzarella va rayhon bilan",
+      "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500",
+      "amount": 20,
+      "rating": 4.8
+    },
+    {
+      "id": 2,
+      "title": "Smash Cheeseburger",
+      "price": 11.9,
+      "description": "Ikki qatlam mol go'shti, pishloq, tarkib va maxsus sous",
+      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500",
+      "amount": 15,
+      "rating": 4.7
+    },
+    {
+      "id": 3,
+      "title": "Caesar Salad",
+      "price": 9,
+      "description": "Tovuq, parmezan va krouton bilan Sezar salat",
+      "image": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=500",
+      "amount": 25,
+      "rating": 4.5
+    },
+    {
+      "id": 4,
+      "title": "Sushi Set",
+      "price": 18,
+      "description": "12 dona aralash sushi to'plami",
+      "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=500",
+      "amount": 10,
+      "rating": 4.9
+    }
+  ]
+}

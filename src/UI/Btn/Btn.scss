@@ -1,0 +1,20 @@
+.btn{
+    background: #FE724C;
+    box-shadow: 0px 10px 40px 0px #7A81BE29;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 28px;
+    user-select: none;
+    &:disabled{
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}

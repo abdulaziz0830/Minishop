@@ -1,0 +1,111 @@
+.auth {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+
+    &_left {
+        width: 50%;
+        border-right: 1px solid #D4D6E0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &_right {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.login {
+    &_info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+
+        &_text,
+        &_link {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 100%;
+            color: #5B5B5E;
+            margin-bottom: 10px;
+        }
+
+        &_link {
+            color: #EE724C;
+        }
+    }
+
+    &_title {
+        font-weight: 600;
+        font-size: 34.41px;
+        line-height: 120%;
+    }
+
+    &_form {
+        width: 324px;
+
+        &_error {
+            font-size: 11px;
+            color: red;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        &_change {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+
+            span {
+                font-weight: 400;
+                font-size: 17px;
+                line-height: 100%;
+                color: #C4C4C4;
+                margin-bottom: 6px;
+            }
+
+            img {
+                padding: 15px;
+                border: 1px solid #EEEEEE;
+                box-shadow: 15px 20px 45px 0px #E9E9E940;
+                padding: 60px;
+                width: 200px;
+                border-radius: 10px;
+            }
+        }
+
+        &_label {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+
+            span {
+                font-weight: 400;
+                font-size: 17px;
+                line-height: 100%;
+                color: #C4C4C4;
+            }
+
+            input {
+                border: 1px solid #EEEEEE;
+                box-shadow: 15px 20px 45px 0px #E9E9E940;
+                padding: 20px;
+                margin-top: 5px;
+                border-radius: 10px;
+                font-weight: 400;
+                font-size: 17px;
+                line-height: 100%;
+
+                &::placeholder {
+                    color: #C4C4C4;
+                }
+            }
+
+        }
+    }
+}
