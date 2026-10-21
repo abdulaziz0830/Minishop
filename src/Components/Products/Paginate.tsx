@@ -9,8 +9,17 @@ interface IProps {
 }
 const Paginate: FC<IProps> = ({ count }) => {
     const setOffset = productStore((state) => state.setOffset)
+    const limit = productStore((state) => state.limit)
+    const offset = productStore((state) => state.offset)
+    const pageCount = Math.ceil(count / limit)
+
+    if (pageCount <= 1) {
+        return null
+    }
+
+    const currentPage = Math.floor(offset / limit)
     const handleSubmit = ({ selected }: ISelect) => {
-        setOffset(selected * 6)
+        setOffset(selected * limit)
     }
     return (
         <ReactPaginate
@@ -18,7 +27,8 @@ const Paginate: FC<IProps> = ({ count }) => {
             breakLabel="..."
             nextLabel=">>"
             pageRangeDisplayed={1}
-            pageCount={Math.ceil(count / 6)}
+            pageCount={pageCount}
+            forcePage={currentPage}
             previousLabel="<<"
             pageLinkClassName="paginate_link"
             activeClassName="paginate_active"

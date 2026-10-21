@@ -1,11 +1,12 @@
 import type { FC } from "react"
+import type { FieldError, UseFormRegisterReturn } from "react-hook-form"
 
 interface IProps {
     title?: string
     type: string
     holder?: string
-    register: any
-    error: any
+    register?: UseFormRegisterReturn
+    error?: FieldError
     hidden?: boolean
 }
 const Input: FC<IProps> = ({ title, type, holder, register, error, hidden }) => {

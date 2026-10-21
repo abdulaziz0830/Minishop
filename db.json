@@ -1,20 +1,5 @@
-{
-  "users": [
-    {
-      "email": "emerates118@gmail.com",
-      "password": "$2a$10$PCDSkhuJCOz1u31X3vB9ouV8cA434VGhjpCE3YYpGoz2ZGuOqM3k6",
-      "username": "abdulaziz0830",
-      "password2": "abdulaziz0830",
-      "id": 1
-    },
-    {
-      "email": "emerates118@gmail.com",
-      "password": "$2a$10$jqY7u4Mkd0Ju7xnBnRn22uko7SAMcO9mYn1SNU/RMfgsPLTuTo3Ei",
-      "username": "abdulaziz",
-      "password2": "abdulaziz0830",
-      "id": 2
-    }
-  ],
+﻿{
+  "users": [],
   "products": [
     {
       "id": 1,
@@ -29,7 +14,7 @@
       "id": 2,
       "title": "Smash Cheeseburger",
       "price": 11.9,
-      "description": "Ikki qatlam mol go'shti, pishloq, tarkib va maxsus sous",
+      "description": "Ikki qatlam mol goshti, pishloq, tarkib va maxsus sous",
       "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500",
       "amount": 15,
       "rating": 4.7
@@ -47,10 +32,82 @@
       "id": 4,
       "title": "Sushi Set",
       "price": 18,
-      "description": "12 dona aralash sushi to'plami",
+      "description": "12 dona aralash sushi toplami",
       "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=500",
       "amount": 10,
       "rating": 4.9
+    },
+    {
+      "id": 5,
+      "title": "Pepperoni Pizza",
+      "price": 14.5,
+      "description": "Kesilgan pepperoni kolbasa va eritilgan mozzarella bilan issiq pitsa",
+      "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500",
+      "amount": 18,
+      "rating": 4.7
+    },
+    {
+      "id": 6,
+      "title": "BBQ Burger",
+      "price": 13.5,
+      "description": "Mol goshti, BBQ sous, karam va qovurilgan piyoz bilan burger",
+      "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500",
+      "amount": 12,
+      "rating": 4.6
+    },
+    {
+      "id": 7,
+      "title": "Tom Yum Soup",
+      "price": 10.5,
+      "description": "Qoziqorin, krevetka va limon oti bilan Tailand shorbasi",
+      "image": "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=500",
+      "amount": 20,
+      "rating": 4.4
+    },
+    {
+      "id": 8,
+      "title": "Chocolate Lava Cake",
+      "price": 7.5,
+      "description": "Ichidan suyuq shocolad oqib chiqadigan iliq tort",
+      "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500",
+      "amount": 30,
+      "rating": 4.9
+    },
+    {
+      "id": 9,
+      "title": "Greek Salad",
+      "price": 8.5,
+      "description": "Yangi sabzavotlar, zeytun va feta pishloq bilan yunon salati",
+      "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500",
+      "amount": 22,
+      "rating": 4.3
+    },
+    {
+      "id": 10,
+      "title": "Chicken Wings",
+      "price": 10,
+      "description": "Qizarib pishirilgan va achchiq sous bilan berilgan tovuq qanotlari",
+      "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=500",
+      "amount": 16,
+      "rating": 4.6
+    },
+    {
+      "id": 11,
+      "title": "Pasta Carbonara",
+      "price": 13,
+      "description": "Tuxum, pishloq va doncha bilan klassik italyan pasta",
+      "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=500",
+      "amount": 14,
+      "rating": 4.5
+    },
+    {
+      "id": 12,
+      "title": "Spring Rolls",
+      "price": 8,
+      "description": "Sabzavotli va tovuqli qovurilgan bahor yarmachalar",
+      "image": "https://images.unsplash.com/photo-1548507006-b55ec55bf2e5?w=500",
+      "amount": 28,
+      "rating": 4.2
     }
   ]
 }

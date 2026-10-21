@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import UserLayout from "../Layouts/UserLayout/UserLayout"
 import { useForm } from "react-hook-form"
 import type { IChangeProfile } from "../types"
@@ -10,7 +10,8 @@ import { userStore } from "../store/userStore"
 import { useUpdateAvatar, useUpdateProfile } from "../services/auth"
 
 const Profile = () => {
-  const [isError, setError] = useState<any>(null)
+  const [isError, setError] = useState<string[] | null>(null)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const updateProfile = useUpdateProfile()
   const updateAvatar = useUpdateAvatar()
   const user = userStore(state => state.user)
@@ -22,26 +23,32 @@ const Profile = () => {
     formState: { errors, isValid }
   } = useForm<IChangeProfile>()
 
+  useEffect(() => {
+    if (user) {
+      reset({
+        username: user.username,
+        email: user.email,
+        password: ""
+      })
+    }
+  }, [user, reset])
+
   const changeProfile = async (data: IChangeProfile) => {
+    if (!user) return
     const { username, password, avatar, email } = data
     const info = { username, password, email }
-    if (user) {
-      try {
-        await updateProfile.mutateAsync({ data: info, id: user.id })
-        setError('')
-      } catch (error) {
-        setError(errorMessage(error))
+    setError(null)
+    setSuccessMessage(null)
+    try {
+      await updateProfile.mutateAsync({ data: info, id: user.id })
+      const fileList = avatar as unknown as FileList | undefined
+      if (fileList && fileList.length > 0 && fileList[0]) {
+        await updateAvatar.mutateAsync({ data: fileList[0], id: user.id })
       }
-      try {
-        if (avatar) {
-          await updateAvatar.mutateAsync({ data: avatar[0], id: user.id })
-        }
-        setError('')
-      } catch (error) {
-        setError(errorMessage(error))
-      }
+      setSuccessMessage("Profile updated successfully")
+    } catch (error) {
+      setError(errorMessage(error))
     }
-    reset()
   }
   return (
     <UserLayout>
@@ -53,7 +60,7 @@ const Profile = () => {
             type="text"
             holder="Username"
             register={register("username", {
-              required: "Username is requried"
+              required: "Username is required"
             })}
             error={errors.username}
           />
@@ -62,7 +69,7 @@ const Profile = () => {
             type="email"
             holder="Email"
             register={register("email", {
-              required: "Email is requried",
+              required: "Email is required",
             })}
             error={errors.email}
           />
@@ -71,7 +78,7 @@ const Profile = () => {
             type="password"
             holder="Password"
             register={register("password", {
-              required: "Password is requried",
+              required: "Password is required",
               minLength: {
                 value: 8,
                 message: "Minimum 8 symbols"
@@ -86,7 +93,6 @@ const Profile = () => {
               hidden={true}
               type="file"
               register={register("avatar")}
-              error={errors.avatar}
             />
           </label>
           {
@@ -96,7 +102,14 @@ const Profile = () => {
               </p>
             ))
           }
-          <Btn disabled={!isValid} text={"Login"} width={250} height={60} mt={0} ma={"auto"} />
+          {
+            successMessage && (
+              <p style={{ color: "green", marginTop: "10px", textAlign: "center" }}>
+                {successMessage}
+              </p>
+            )
+          }
+          <Btn disabled={!isValid} text={"Save"} width={250} height={60} mt={0} ma={"auto"} />
         </form>
       </div>
     </UserLayout>

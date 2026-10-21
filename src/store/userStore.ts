@@ -5,7 +5,7 @@ import { devtools } from "zustand/middleware";
 
 interface IUserStore {
     user: IProfile | null;
-    setUser: (data: IProfile) => void;
+    setUser: (data: IProfile | null) => void;
 }
 
 export const userStore = create<IUserStore>()(devtools(

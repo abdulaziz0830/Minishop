@@ -4,6 +4,7 @@
 
     const Sort = () => {
         const setSelect = productStore(state => state.setSelect);
+        const setOffset = productStore(state => state.setOffset);
         const options = [
             { value: '', label: 'Default' },
             { value: 'title', label: 'Name' },
@@ -13,6 +14,7 @@
         const handleChange = (data: SingleValue<Option>) => {
             if (data) {
                 setSelect(data.value);
+                setOffset(0);
             }
         }
         return (
@@ -28,7 +30,7 @@
                         outline: "unset",
                         color: "gray",
                         border: "2px solid #efefef",
-                        background:"#FCFCVD" 
+                        background: "#FCFCFD" 
                     })
                 }}
             />

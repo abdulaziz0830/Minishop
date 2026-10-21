@@ -3,6 +3,7 @@ import menuIcon from "../../assets/images/Menu.svg?react";
 import basketIcon from "../../assets/images/basketicon.svg?react";
 import profileIcon from "../../assets/images/Profile.svg?react";
 import logoutIcon from "../../assets/images/Logout.svg";
+import defaultAvatar from "../../assets/images/ProfileAva.png";
 import Btn from "../../UI/Btn/Btn";
 import { useGetProfileQuery } from "../../services/user";
 import { userStore } from "../../store/userStore";
@@ -19,7 +20,7 @@ const Sidebar = () => {
         if (data) {
             setUser(data.data)
         }
-    }, [data])
+    }, [data, setUser])
     const links = [
         { url: "/", name: "Menu", icon: menuIcon, },
         { url: "/basket", name: "Basket", icon: basketIcon, },
@@ -28,13 +29,15 @@ const Sidebar = () => {
     const logout = () => {
         localStorage.removeItem("access")
         localStorage.removeItem("refresh")
+        localStorage.removeItem("userId")
+        setUser(null)
         navigate("/login")
     }
     return (
         <div className="sidebar">
             {user ?
                 <div className="sidebar_top">
-                    <img className="sidebar_top_img" src={user.avatar || "/default-avatar.png"} alt="" />
+                    <img className="sidebar_top_img" src={user.avatar || defaultAvatar} alt="" />
                     <h2 className="sidebar_top_title">{user.username}</h2>
                     <a href={`mailto:${user.email}`} className="sidebar_top_gmail">{user.email}</a>
                 </div>

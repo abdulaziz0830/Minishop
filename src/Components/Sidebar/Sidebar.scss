@@ -1,14 +1,21 @@
+// =====================
+// Sidebar
+// =====================
 .sidebar {
-    width: 300px;
-    border: 1px solid #D4D6E0;
-    padding: 30px;
+    width: 280px;
+    min-width: 220px;
+    border-right: 1px solid #D4D6E0;
+    padding: 30px 24px;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
 
     &_top {
         &_img {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
             object-position: top;
             border-radius: 50%;
@@ -16,35 +23,38 @@
 
         &_title {
             font-weight: 700;
-            font-size: 23px;
+            font-size: 20px;
             line-height: 100%;
-            margin-top: 20px;
-            margin-bottom: 7px;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            word-break: break-word;
         }
 
         &_gmail {
             font-weight: 400;
-            font-size: 17px;
+            font-size: 14px;
             line-height: 100%;
             color: #9EA1B1;
+            word-break: break-all;
         }
     }
 
     &_list {
-        margin-top: 80px;
+        margin-top: 60px;
         display: flex;
-        gap: 35px;
+        gap: 30px;
         flex-direction: column;
 
         &_link {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             font-weight: 500;
-            font-size: 18px;
+            font-size: 17px;
             line-height: 100%;
             color: black;
-            span{
+
+            span {
                 background-color: #FE724C;
                 color: #fff;
                 width: 20px;
@@ -53,19 +63,85 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 13px;
+                font-size: 12px;
                 font-weight: 400;
             }
-            svg{
-                width: 25px;
-                height: 25px;
+
+            svg {
+                width: 24px;
+                height: 24px;
             }
+
             &.active {
                 color: #FE724C;
-                svg{
-                    path{
+                svg {
+                    path {
                         fill: #FE724C;
                     }
+                }
+            }
+        }
+    }
+
+    // Tablet — sidebar yiqiladi
+    @media (max-width: 900px) {
+        width: 220px;
+        padding: 24px 16px;
+    }
+
+    // Mobile — sidebar pastga o'tadi (horizontal navbar)
+    @media (max-width: 640px) {
+        width: 100%;
+        min-height: unset;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-right: none;
+        border-bottom: 1px solid #D4D6E0;
+        padding: 12px 16px;
+
+        &_top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &_img {
+                width: 42px;
+                height: 42px;
+            }
+
+            &_title {
+                font-size: 15px;
+                margin-top: 0;
+                margin-bottom: 2px;
+            }
+
+            &_gmail {
+                font-size: 12px;
+            }
+        }
+
+        &_list {
+            margin-top: 0;
+            flex-direction: row;
+            gap: 16px;
+
+            &_link {
+                font-size: 0; // text yashirish, faqat icon
+                gap: 0;
+
+                svg {
+                    width: 26px;
+                    height: 26px;
+                }
+
+                span {
+                    font-size: 10px;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    margin-top: -20px;
+                    margin-left: 14px;
                 }
             }
         }

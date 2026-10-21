@@ -9,6 +9,7 @@ interface IProductStore {
     offset: number;
     select: string;
     search: string;
+    setSearch: (search: string) => void;
     setSEarch: (search: string) => void;
     setSelect: (select: string) => void;
     setOffset: (offset: number) => void;
@@ -18,14 +19,16 @@ interface IProductStore {
 
 export const productStore = create<IProductStore>()(devtools(
     (set) => ({
-        select:"",
+        select: "",
         products: null,
         limit: 6,
         offset: 0,
         search: "",
+        setSearch: (data) => set({ search: data }),
         setSEarch: (data) => set({ search: data }),
         setSelect: (data) => set({ select: data }),
         setOffset: (data) => set({ offset: data }),
+        setLimit: (data) => set({ limit: data }),
         setProducts: (data) => set({ products: data })
     })
 ))

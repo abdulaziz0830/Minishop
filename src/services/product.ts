@@ -16,14 +16,20 @@ export const useGetProductsQuery = (offset: number, limit: number, select: strin
                 );
             }
 
-                   if (select) {
+            if (select) {
                 const isDescending = select.startsWith("-");
                 const field = (isDescending ? select.slice(1) : select) as keyof IProduct;
                 items = [...items].sort((a, b) => {
-                    const valA = a[field] as any;
-                    const valB = b[field] as any;
-                    if (valA < valB) return isDescending ? 1 : -1;
-                    if (valA > valB) return isDescending ? -1 : 1;
+                    const valA = a[field];
+                    const valB = b[field];
+                    if (valA === undefined || valB === undefined) return 0;
+                    if (typeof valA === "string" && typeof valB === "string") {
+                        const cmp = valA.localeCompare(valB);
+                        return isDescending ? -cmp : cmp;
+                    }
+                    if (typeof valA === "number" && typeof valB === "number") {
+                        return isDescending ? valB - valA : valA - valB;
+                    }
                     return 0;
                 });
             }
@@ -42,6 +48,7 @@ export const useGetProductIDQuery = (id: number) => {
         queryFn: async () => {
             const res = await api.get<IProduct>(`/products/${id}`);
             return res.data
-        }
+        },
+        enabled: !isNaN(id) && id > 0
     })
 }

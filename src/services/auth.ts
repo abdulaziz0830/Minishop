@@ -11,7 +11,10 @@ export const useLoginMutation = () => {
     return useMutation({
         mutationFn: (data: ILogin) => api.post("/login", { email: data.username, password: data.password }),
         onSuccess: ({ data }) => {
-            localStorage.setItem("access", data.accessToken)
+            localStorage.setItem("access", data.accessToken);
+            if (data.user?.id) {
+                localStorage.setItem("userId", String(data.user.id));
+            }
         }
     })
 }
@@ -33,7 +36,7 @@ export const useUpdateProfile = () => {
 export const useUpdateAvatar = () => {
     const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: ({ data, id }: { data: any, id: number }) => {
+        mutationFn: ({ data, id }: { data: File | Blob, id: number }) => {
             const formData = new FormData();
             formData.append("avatar", data);
             return api.patch(`/users/${id}`, formData)

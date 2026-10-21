@@ -11,15 +11,15 @@ import ProductId from "./pages/ProductId"
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<PrivateRoute />}> 
+      <Route element={<PrivateRoute />}> 
         <Route path="/" element={<Menu />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/:id" element={<ProductId />} />
+        <Route path="/product/:id" element={<ProductId />} />
       </Route>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }

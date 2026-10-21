@@ -8,12 +8,15 @@ interface IBasketStore {
     setBasket: (basket: IProduct[]) => void;
 }
 const localBasket = () => {
-    const data = localStorage.getItem("basket");
-    if (data) {
-        return JSON.parse(data);
-    }else {
+    try {
+        const data = localStorage.getItem("basket");
+        if (data) {
+            return JSON.parse(data);
+        }
+    } catch {
         return [];
     }
+    return [];
 }
 
 export const basketStore = create<IBasketStore>()(devtools(

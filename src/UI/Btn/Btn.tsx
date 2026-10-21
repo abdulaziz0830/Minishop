@@ -20,7 +20,7 @@ const Btn: FC<IBtnProps> = ({ text, width, height, mt, ma, disabled, icon, click
             marginLeft: ma,
             marginRight: ma
         }}>
-            <img src={icon} alt="" />
+            {icon && <img src={icon} alt="" />}
             {text}
         </button>
     )

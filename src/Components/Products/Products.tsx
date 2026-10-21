@@ -15,7 +15,7 @@ const Products = () => {
     const { products, setProducts, limit, offset, select, search } = productStore();
     const basket = basketStore(state => state.basket);
     const setBasket = basketStore(state => state.setBasket);
-    const { data } = useGetProductsQuery(offset, limit, select, search);
+    const { data, isLoading } = useGetProductsQuery(offset, limit, select, search);
     useEffect(() => {
         if (data) {
             const products = data.results.map((product: IProduct) => {
@@ -25,13 +25,13 @@ const Products = () => {
             setProducts(products)
         }
     }, [data, setProducts])
-    const skleton = [...Array(6)].map((_, i) => <Skleton key={i} />)
+    const skleton = [...Array(limit)].map((_, i) => <Skleton key={i} />)
     const addProduct = (id: number) => {
         const find = basket?.find(product => product.id === id)
         if (!find) {
             const productToAdd = products?.find(product => product.id === id)
             if (productToAdd) {
-                setBasket([...basket, {...productToAdd,amount: 1}])
+                setBasket([...basket, {...productToAdd, amount: 1}])
             }
         }
     }
@@ -46,38 +46,42 @@ const Products = () => {
             </div>
             <div className="product_box">
                 {
-                    products ?
-                        products.map(product => (
-                            <div className="product_card" key={product.id}>
-                                <Link to={`/${product.id}`}>
-                                    <img src={product.image} alt="" className="product_card_img" />
-                                    <div className="product_card_info">
-                                        <p className="product_card_rating">
-                                            <span>{product.rating}</span>
-                                            <img src={starIcon} alt="" />
-                                        </p>
-                                        <h3 className="product_card_title">
-                                            {product.title}
-                                        </h3>
-                                        <p className="product_card_text">{product.description}</p>
-                                    </div>
-                                    <p className="product_card_price">
-                                        {product.price}
-                                        <span>$</span>
-                                    </p>
-                                </Link>
-                                <button className="product_card_btn" onClick={() => addProduct(product.id)}>
-                                    <img src={basketIcon} alt="" />
-                                </button>
-                            </div>
-                        ))
-                        :
-
+                    isLoading ?
                         skleton.map((item, i) => (
                             <div className="product_card" key={i}>
                                 {item}
                             </div>
                         ))
+                        : products && products.length > 0 ?
+                            products.map(product => (
+                                <div className="product_card" key={product.id}>
+                                    <Link to={`/product/${product.id}`}>
+                                        <img src={product.image} alt="" className="product_card_img" />
+                                        <div className="product_card_info">
+                                            <p className="product_card_rating">
+                                                <span>{product.rating}</span>
+                                                <img src={starIcon} alt="" />
+                                            </p>
+                                            <h3 className="product_card_title">
+                                                {product.title}
+                                            </h3>
+                                            <p className="product_card_text">{product.description}</p>
+                                        </div>
+                                        <p className="product_card_price">
+                                            {product.price}
+                                            <span>$</span>
+                                        </p>
+                                    </Link>
+                                    <button className="product_card_btn" onClick={() => addProduct(product.id)}>
+                                        <img src={basketIcon} alt="" />
+                                    </button>
+                                </div>
+                            ))
+                            : (
+                                <p style={{ gridColumn: "1 / -1", textAlign: "center", fontSize: "20px", color: "#9EA1B1", padding: "40px 0" }}>
+                                    No products found
+                                </p>
+                            )
                 }
             </div>
             <Paginate count={count} />
